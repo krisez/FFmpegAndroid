@@ -4,27 +4,23 @@
 
 extern "C" {
 #include "include/libavcodec/avcodec.h"
+#include "ffmpeg.h"
 
-JNIEXPORT jstring JNICALL
+JNIEXPORT jint JNICALL
 Java_cn_krisez_vvv_FFmpegUtil_exec(JNIEnv *env, jclass, jobjectArray cmd) {
     int leng = env->GetArrayLength(cmd);
     char *argv[leng];
     for (int i = 0; i < leng; ++i) {
-        argv[i] = reinterpret_cast<char *>(env->GetObjectArrayElement(cmd, i));
+        argv[i] = (char*) env->GetStringUTFChars((jstring) env->GetObjectArrayElement(cmd, i), nullptr);
     }
     LOGD("ASDASDADS");
-    /*if (ffmpeg_exec(leng, argv) == 1) {
-        return env->NewStringUTF("SUCCESS");
-    }*/
-    return env->NewStringUTF(avcodec_configuration());
+    return ffmpeg_exec(leng,argv);
 }
 
 JNIEXPORT jstring JNICALL
 Java_cn_krisez_vvv_FFmpegUtil_stringFromJNI(
         JNIEnv *env,
         jclass /* this */) {
-/*    std::string hello = "Hello from C++";
-    return env->NewStringUTF(hello.c_str());*/
     const char *s = "asdad";
     return env->NewStringUTF(s);
 }

@@ -8,6 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -21,16 +26,20 @@ public class MainActivity extends AppCompatActivity {
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tv.setText(FFmpegUtil.exec(new String[]{
-                        "ffmpeg",
-                        "-i",
-                        Environment.getExternalStorageDirectory()+"/666.mp4",
-                        "-i",
-                        Environment.getExternalStorageDirectory()+"/aaa.mp3",
-                        "-filter_complex",
-                        "amix=inputs=2:duration=shortest",
-                        Environment.getExternalStorageDirectory() + "/" + System.currentTimeMillis() + ".mp4"
-                }));
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String out = Environment.getExternalStorageDirectory() + "/" + System.currentTimeMillis() + ".mp4";
+                        tv.setText("a  "+FFmpegUtil.exec(new String[]{
+                                "ffmpeg",
+                                "-i",
+                                Environment.getExternalStorageDirectory()+"/ysgs.mp4",
+                                "-ss","14",
+                                "-c","copy","-t","10",
+                                out
+                        }));
+                    }
+                }).run();
             }
         });
     }

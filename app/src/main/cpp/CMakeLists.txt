@@ -6,8 +6,9 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 include_directories(
-        ${CMAKE_SOURCE_DIR}/include
+        ${CMAKE_SOURCE_DIR}/include/
         ${CMAKE_SOURCE_DIR}/
+        D:/zzzzzzz/ffmpeg-h/ffmpeg-422
 )
 #定义全局 my_source_path 变量
 file(GLOB my_source_path
@@ -33,6 +34,7 @@ add_library(avformat SHARED IMPORTED)
 add_library(avutil SHARED IMPORTED)
 add_library(swresample SHARED IMPORTED)
 add_library(swscale SHARED IMPORTED)
+#add_library(postproc SHARED IMPORTED)
 
 set_target_properties(avcodec PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}/libavcodec.so)
 set_target_properties(avdevice PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}/libavdevice.so)
@@ -41,6 +43,7 @@ set_target_properties(avformat PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/
 set_target_properties(avutil PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}/libavutil.so)
 set_target_properties(swresample PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}/libswresample.so)
 set_target_properties(swscale PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}/libswscale.so)
+#set_target_properties(postproc PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}/libpostproc.so)
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -68,6 +71,7 @@ target_link_libraries( # Specifies the target library.
         avutil
         swresample
         swscale
+#        postproc
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib})
