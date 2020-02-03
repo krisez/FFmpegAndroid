@@ -4,10 +4,11 @@
 
 extern "C" {
 #include "include/libavcodec/avcodec.h"
-#include "ffmpeg.h"
+#include "ffmpeg/ffmpeg.h"
+#include "ffmpeg/ffprobe.h"
 
 JNIEXPORT jint JNICALL
-Java_cn_krisez_vvv_FFmpegUtil_exec(JNIEnv *env, jclass, jobjectArray cmd) {
+Java_cn_krisez_vvv_FFmpegUtil_ffmpegExec(JNIEnv *env, jclass, jobjectArray cmd) {
     int leng = env->GetArrayLength(cmd);
     char *argv[leng];
     for (int i = 0; i < leng; ++i) {
@@ -23,6 +24,17 @@ Java_cn_krisez_vvv_FFmpegUtil_stringFromJNI(
         jclass /* this */) {
     const char *s = "asdad";
     return env->NewStringUTF(s);
+}
+
+JNIEXPORT jint JNICALL
+Java_cn_krisez_vvv_FFmpegUtil_ffprobeExec(JNIEnv *env, jclass, jobjectArray cmd) {
+    int leng = env->GetArrayLength(cmd);
+    char *argv[leng];
+    for (int i = 0; i < leng; ++i) {
+        argv[i] = (char *) env->GetStringUTFChars((jstring) env->GetObjectArrayElement(cmd, i),nullptr);
+    }
+    LOGD("ASDASDADS");
+    return ffprobe_exec(leng, argv);
 }
 
 }

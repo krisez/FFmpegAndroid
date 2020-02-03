@@ -12,10 +12,12 @@ public class FFmpegUtil {
         System.loadLibrary("avutil");
         System.loadLibrary("swresample");
         System.loadLibrary("swscale");
-//        System.loadLibrary("postproc");
-        System.loadLibrary("native-lib");
+        System.loadLibrary("postproc");
+        System.loadLibrary("native-ffmpeg");
+//        System.loadLibrary("native-ffprobe");
     }
     public static native String stringFromJNI();
-    public static native int exec(String[] cmd);
+    public static native int ffmpegExec(String[] cmd);
+    public static native int ffprobeExec(String[] cmd);
 
 }
