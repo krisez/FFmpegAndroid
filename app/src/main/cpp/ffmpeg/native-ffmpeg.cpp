@@ -22,11 +22,11 @@ JNIEXPORT jstring JNICALL
 Java_cn_krisez_vvv_FFmpegUtil_stringFromJNI(
         JNIEnv *env,
         jclass /* this */) {
-    const char *s = "asdad";
+    char *s = "asdad";
     return env->NewStringUTF(s);
 }
 
-JNIEXPORT jint JNICALL
+JNIEXPORT jstring JNICALL
 Java_cn_krisez_vvv_FFmpegUtil_ffprobeExec(JNIEnv *env, jclass, jobjectArray cmd) {
     int leng = env->GetArrayLength(cmd);
     char *argv[leng];
@@ -34,7 +34,7 @@ Java_cn_krisez_vvv_FFmpegUtil_ffprobeExec(JNIEnv *env, jclass, jobjectArray cmd)
         argv[i] = (char *) env->GetStringUTFChars((jstring) env->GetObjectArrayElement(cmd, i),nullptr);
     }
     LOGD("ASDASDADS");
-    return ffprobe_exec(leng, argv);
+    return env->NewStringUTF(ffprobe_exec(leng, argv));
 }
 
 }

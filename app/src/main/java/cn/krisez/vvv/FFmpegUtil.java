@@ -18,6 +18,6 @@ public class FFmpegUtil {
     }
     public static native String stringFromJNI();
     public static native int ffmpegExec(String[] cmd);
-    public static native int ffprobeExec(String[] cmd);
+    public static native String ffprobeExec(String[] cmd);
 
 }

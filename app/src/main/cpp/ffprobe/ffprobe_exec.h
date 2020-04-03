@@ -1,1 +1,0 @@
-int ffprobe_exec(int leng,char **argv);

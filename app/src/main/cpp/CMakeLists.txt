@@ -17,28 +17,18 @@ file(GLOB my_source_ffmpeg
         ${CMAKE_SOURCE_DIR}/ffmpeg/*.cpp
         ${CMAKE_SOURCE_DIR}/ffmpeg/*.c
         )
-file(GLOB my_source_ffprobe
-        ${CMAKE_SOURCE_DIR}/ffprobe/*.c
-        ${CMAKE_SOURCE_DIR}/ffprobe/*.cpp
-        )
+
 # Creates and names a library, sets it as either STATICw
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 
 add_library( # Sets the name of the library.
-        native-ffmpeg
+        native-cmd
         # Sets the library as a shared library.
         SHARED
         # Provides a relative path to your source file(s).
         ${my_source_ffmpeg})
-
-#[[add_library( # Sets the name of the library.
-        native-ffprobe
-        # Sets the library as a shared library.
-        SHARED
-        # Provides a relative path to your source file(s).
-        ${my_source_ffprobe})]]
 
 add_library(avcodec SHARED IMPORTED)
 add_library(avdevice SHARED IMPORTED)
@@ -76,8 +66,7 @@ find_library( # Sets the name of the path variable.
 # build script, prebuilt third-party libraries, or system libraries.
 
 target_link_libraries( # Specifies the target library.
-        native-ffmpeg
-#        native-ffprobe
+        native-cmd
         avcodec
         avdevice
         avfilter

@@ -3548,7 +3548,7 @@ static inline int check_section_show_entries(int section_id)
             do_show_##varname = 1;                                      \
     } while (0)
 
-int ffprobe_exec(int argc, char **argv)
+const char* ffprobe_exec(int argc, char **argv)
 {
     LOGD("FFPROBE","命令开始");
     iformat = NULL;
