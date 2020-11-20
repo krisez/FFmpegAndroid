@@ -9,13 +9,12 @@ include_directories(
         ${CMAKE_SOURCE_DIR}/include/
         ${CMAKE_SOURCE_DIR}/
 #        ${CMAKE_SOURCE_DIR}/ffprobe/
-        ${CMAKE_SOURCE_DIR}/ffmpeg/
-#        D:/technology/ffmpeg-422
+        ${CMAKE_SOURCE_DIR}/cmd/
 )
 #定义全局 my_source_path 变量
 file(GLOB my_source_ffmpeg
-        ${CMAKE_SOURCE_DIR}/ffmpeg/*.cpp
-        ${CMAKE_SOURCE_DIR}/ffmpeg/*.c
+        ${CMAKE_SOURCE_DIR}/cmd/*.cpp
+        ${CMAKE_SOURCE_DIR}/cmd/*.c
         )
 
 # Creates and names a library, sets it as either STATICw

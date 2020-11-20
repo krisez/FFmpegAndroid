@@ -7,6 +7,14 @@ extern "C" {
 #include "ffmpeg/ffmpeg.h"
 #include "ffmpeg/ffprobe.h"
 
+JNIEXPORT jstring JNICALL
+Java_cn_krisez_vvv_FFmpegUtil_stringFromJNI(
+        JNIEnv *env,
+        jclass /* this */) {
+    char *s = "asdad";
+    return env->NewStringUTF(s);
+}
+
 JNIEXPORT jint JNICALL
 Java_cn_krisez_vvv_FFmpegUtil_ffmpegExec(JNIEnv *env, jclass, jobjectArray cmd) {
     int leng = env->GetArrayLength(cmd);
@@ -16,14 +24,6 @@ Java_cn_krisez_vvv_FFmpegUtil_ffmpegExec(JNIEnv *env, jclass, jobjectArray cmd) 
     }
     LOGD("ASDASDADS");
     return ffmpeg_exec(leng,argv);
-}
-
-JNIEXPORT jstring JNICALL
-Java_cn_krisez_vvv_FFmpegUtil_stringFromJNI(
-        JNIEnv *env,
-        jclass /* this */) {
-    char *s = "asdad";
-    return env->NewStringUTF(s);
 }
 
 JNIEXPORT jstring JNICALL
