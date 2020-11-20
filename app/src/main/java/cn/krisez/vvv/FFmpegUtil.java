@@ -13,7 +13,7 @@ public class FFmpegUtil {
         System.loadLibrary("swresample");
         System.loadLibrary("swscale");
         System.loadLibrary("postproc");
-        System.loadLibrary("native-ffmpeg");
+        System.loadLibrary("native-cmd");
 //        System.loadLibrary("native-ffprobe");
     }
     public static native String stringFromJNI();

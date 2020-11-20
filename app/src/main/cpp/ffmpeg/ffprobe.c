@@ -64,7 +64,7 @@
 #  endif
 #  define pthread_mutex_unlock(a) do{}while(0)
 #endif
-#define printf(fmt, ...) LOGD(fmt,## __VA_ARGS__);
+#define printf(fmt, ...) printfff(fmt,## __VA_ARGS__);
 typedef struct InputStream {
     AVStream *st;
 
@@ -78,8 +78,8 @@ typedef struct InputFile {
     int       nb_streams;
 } InputFile;
 
-const char program_name_yyl[] = "ffprobe";
-const int program_birth_year_yyl = 2007;
+const char program_name[] = "ffprobe";
+const int program_birth_year = 2007;
 
 static int do_bitexact = 0;
 static int do_count_frames = 0;
@@ -3548,7 +3548,18 @@ static inline int check_section_show_entries(int section_id)
             do_show_##varname = 1;                                      \
     } while (0)
 
-const char* ffprobe_exec(int argc, char **argv)
+
+char* ALL_CONTENT = "";
+
+void printfff(const char* fmt,...){
+    va_list valist;
+    va_start(valist,fmt);
+    LOGD(fmt,valist);
+    va_end(valist);
+}
+
+
+char* ffprobe_exec(int argc, char **argv)
 {
     LOGD("FFPROBE","命令开始");
     iformat = NULL;
