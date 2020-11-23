@@ -30,15 +30,14 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         String out = Environment.getExternalStorageDirectory() + "/" + System.currentTimeMillis() + ".mp4";
-                        tv.setText("a  "+FFmpegUtil.ffprobeExec(new String[]{
+                        tv.setText("a  " + FFmpegUtil.ffprobeExec(new String[]{
                                 "ffprobe",
-                                "-select_streams","v","-skip_frame","nokey","-show_frames","-show_entries",
-                                "frame=pkt_pts_time,pict_type","-print_format","json",
-                                Environment.getExternalStorageDirectory()+"/ysgs.mp4"
-                               /* Environment.getExternalStorageDirectory()+"/ysgs.mp4",
-                                "-ss","14",
-                                "-c","copy","-t","10",
-                                out*/
+                                "-select_streams", "v", "-skip_frame", "nokey", "-show_frames", "-show_entries",
+                                "frame=pkt_pts_time,pict_type", "-print_format", "json",
+                                Environment.getExternalStorageDirectory() + "/1/waitting for love.mp4"
+                                /*  "-ss","14",
+                                  "-c","copy","-t","10",
+                                  out*/
                         }));
                     }
                 }).run();

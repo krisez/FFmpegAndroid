@@ -10,6 +10,7 @@ include_directories(
         ${CMAKE_SOURCE_DIR}/
 #        ${CMAKE_SOURCE_DIR}/ffprobe/
         ${CMAKE_SOURCE_DIR}/cmd/
+        D:/ffmpeg/source
 )
 #定义全局 my_source_path 变量
 file(GLOB my_source_ffmpeg

@@ -4,8 +4,8 @@
 
 extern "C" {
 #include "include/libavcodec/avcodec.h"
-#include "ffmpeg/ffmpeg.h"
-#include "ffmpeg/ffprobe.h"
+#include "cmd/ffmpeg.h"
+#include "cmd/ffprobe.h"
 
 JNIEXPORT jstring JNICALL
 Java_cn_krisez_vvv_FFmpegUtil_stringFromJNI(
