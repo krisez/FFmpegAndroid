@@ -20,10 +20,11 @@ Java_cn_krisez_vvv_FFmpegUtil_ffmpegExec(JNIEnv *env, jclass, jobjectArray cmd) 
     int leng = env->GetArrayLength(cmd);
     char *argv[leng];
     for (int i = 0; i < leng; ++i) {
-        argv[i] = (char*) env->GetStringUTFChars((jstring) env->GetObjectArrayElement(cmd, i), nullptr);
+        argv[i] = (char *) env->GetStringUTFChars((jstring) env->GetObjectArrayElement(cmd, i),
+                                                  nullptr);
     }
     LOGD("ASDASDADS");
-    return ffmpeg_exec(leng,argv);
+    return ffmpeg_exec(leng, argv);
 }
 
 JNIEXPORT jstring JNICALL
@@ -31,7 +32,8 @@ Java_cn_krisez_vvv_FFmpegUtil_ffprobeExec(JNIEnv *env, jclass, jobjectArray cmd)
     int leng = env->GetArrayLength(cmd);
     char *argv[leng];
     for (int i = 0; i < leng; ++i) {
-        argv[i] = (char *) env->GetStringUTFChars((jstring) env->GetObjectArrayElement(cmd, i),nullptr);
+        argv[i] = (char *) env->GetStringUTFChars((jstring) env->GetObjectArrayElement(cmd, i),
+                                                  nullptr);
     }
     LOGD("ASDASDADS");
 
