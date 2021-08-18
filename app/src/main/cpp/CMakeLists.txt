@@ -2,6 +2,8 @@
 # documentation: https://d.android.com/studio/projects/add-native-code.html
 
 # Sets the minimum version of CMake required to build the native library.
+# ！！！！mathops.h   对于架构的调整，arm的不要去arm文件夹 就在本地处理！！！！
+
 
 cmake_minimum_required(VERSION 3.4.1)
 
@@ -10,7 +12,7 @@ include_directories(
         ${CMAKE_SOURCE_DIR}/
 #        ${CMAKE_SOURCE_DIR}/ffprobe/
         ${CMAKE_SOURCE_DIR}/cmd/
-        D:/ffmpeg/source
+        E:/ubuntu/ffmpeg-4.4
 )
 #定义全局 my_source_path 变量
 file(GLOB my_source_ffmpeg
